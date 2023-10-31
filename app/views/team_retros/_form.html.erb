@@ -1,0 +1,27 @@
+<%= form_with(model: team_retro) do |form| %>
+  <% if team_retro.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(team_retro.errors.count, "error") %> prohibited this team_retro from being saved:</h2>
+
+      <ul>
+        <% team_retro.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :team_id, style: "display: block" %>
+    <%= form.text_field :team_id %>
+  </div>
+
+  <div>
+    <%= form.label :retros_id, style: "display: block" %>
+    <%= form.text_field :retros_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
