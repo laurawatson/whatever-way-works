@@ -149,3 +149,41 @@ Processing by RetrospectivesController#new as HTML
 Completed 200 OK in 50ms (Views: 16.7ms | ActiveRecord: 6.2ms | Allocations: 82263)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1119005869972176900)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to DeviseCreateUsers (20231031094813)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231031094813') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(1119005869972176900)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-31 09:51:33 +0000
+  
+NoMethodError (undefined method `before_action' for ApplicationRecord(abstract):Class
+Did you mean?  before_commit):
+  
+app/models/application_record.rb:3:in `<class:ApplicationRecord>'
+app/models/application_record.rb:1:in `<main>'
+app/models/user.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/" for ::1 at 2023-10-31 09:58:28 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RetrospectivesController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms | Allocations: 5929)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-10-31 09:58:28 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /Users/lauraw/.rbenv/versions/2.7.8/lib/ruby/gems/2.7.0/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/lauraw/.rbenv/versions/2.7.8/lib/ruby/gems/2.7.0/gems/devise-4.9.3/app/views/devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 897)
+  Rendered /Users/lauraw/.rbenv/versions/2.7.8/lib/ruby/gems/2.7.0/gems/devise-4.9.3/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 5.0ms | Allocations: 3821)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 38604)
+Completed 200 OK in 63ms (Views: 27.0ms | ActiveRecord: 11.1ms | Allocations: 153551)
+
+
