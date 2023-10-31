@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Retrospectives</h1>
+
+<div id="retrospectives">
+  <% @retrospectives.each do |retrospective| %>
+    <%= render retrospective %>
+    <p>
+      <%= link_to "Show this retrospective", retrospective %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New retrospective", new_retrospective_path %>

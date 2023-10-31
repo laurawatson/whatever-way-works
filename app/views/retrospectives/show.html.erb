@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @retrospective %>
+
+<div>
+  <%= link_to "Edit this retrospective", edit_retrospective_path(@retrospective) %> |
+  <%= link_to "Back to retrospectives", retrospectives_path %>
+
+  <%= button_to "Destroy this retrospective", @retrospective, method: :delete %>
+</div>

@@ -117,3 +117,35 @@ Migrating to EnableUuid (20231029204006)
   [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1119005869972176900)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1119005869972176900)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateRetrospectives (20231031093731)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "retrospectives" ("id" uuid DEFAULT gen_random_uuid() NOT NULL PRIMARY KEY, "date_of_retro" timestamp(6), "label" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231031093731') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1119005869972176900)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2023-10-31 09:40:26 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RetrospectivesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering retrospectives/index.html.erb within layouts/application
+  [1m[36mRetrospective Load (1.8ms)[0m  [1m[34mSELECT "retrospectives".* FROM "retrospectives"[0m
+  ↳ app/views/retrospectives/index.html.erb:6
+  Rendered retrospectives/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1079)
+  Rendered layout layouts/application.html.erb (Duration: 511.8ms | Allocations: 108518)
+Completed 200 OK in 534ms (Views: 513.3ms | ActiveRecord: 1.8ms | Allocations: 130429)
+
+
+Started GET "/retrospectives/new" for ::1 at 2023-10-31 09:40:31 +0000
+Processing by RetrospectivesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering retrospectives/new.html.erb within layouts/application
+  Rendered retrospectives/_form.html.erb (Duration: 13.4ms | Allocations: 5759)
+  Rendered retrospectives/new.html.erb within layouts/application (Duration: 14.2ms | Allocations: 6074)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 8121)
+Completed 200 OK in 50ms (Views: 16.7ms | ActiveRecord: 6.2ms | Allocations: 82263)
+
+
