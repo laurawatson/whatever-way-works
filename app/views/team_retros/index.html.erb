@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Team retros</h1>
+
+<div id="team_retros">
+  <% @team_retros.each do |team_retro| %>
+    <%= render team_retro %>
+    <p>
+      <%= link_to "Show this team retro", team_retro %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New team retro", new_team_retro_path %>
