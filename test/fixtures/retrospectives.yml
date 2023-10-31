@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_retro: 2023-10-31 09:37:31
+  label: MyString
+
+two:
+  date_of_retro: 2023-10-31 09:37:31
+  label: MyString
