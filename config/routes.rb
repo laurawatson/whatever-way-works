@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sprints
   resources :teams
   devise_for :users
   root 'retrospectives#index'
